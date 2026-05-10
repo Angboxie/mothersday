@@ -1,0 +1,201 @@
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:#050402;font-family:'Noto Serif SC',serif;cursor:none;user-select:none}
+#c{position:fixed;inset:0;z-index:100;pointer-events:none}
+
+/* ── SCENES ── */
+#scenes{position:fixed;inset:0;z-index:1}
+.scene{position:absolute;inset:0;overflow:hidden;opacity:0;pointer-events:none}
+.scene.active{opacity:1;pointer-events:all}
+.s-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat}
+.s-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+
+/* ── S0 SCROLL ── */
+#s0-overlay{
+  position:absolute;inset:0;z-index:2;
+  background:#050402;
+  transform-origin:right center;
+}
+.s0-text{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+}
+.s0-text p:first-child{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.65rem,1.8vw,.9rem);letter-spacing:.5em;
+  color:rgba(200,185,160,.5);margin-bottom:1.5rem;
+}
+.s0-text h1{
+  font-family:'Zhi Mang Xing',serif;
+  font-size:clamp(6rem,22vw,16rem);
+  font-weight:400;letter-spacing:.06em;line-height:1;
+  color:#f5f0e8;
+  filter:drop-shadow(0 0 60px rgba(245,240,232,.18));
+  mix-blend-mode:screen;
+}
+.s0-text p:last-child{
+  font-size:clamp(.7rem,1.8vw,.9rem);letter-spacing:.35em;
+  color:rgba(200,185,160,.4);font-weight:300;margin-top:1rem;
+}
+.click-hint{
+  position:absolute;bottom:2.8rem;left:50%;transform:translateX(-50%);z-index:5;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.62rem,1.6vw,.82rem);letter-spacing:.32em;
+  color:rgba(200,185,160,.35);white-space:nowrap;
+}
+@keyframes pulse{0%,100%{opacity:.2}50%{opacity:.65}}
+
+/* ── S1 FIRE POEM ── */
+.s1-poem{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:flex-end;justify-content:center;
+  padding:clamp(2rem,6vw,6rem);
+  opacity:0;transition:opacity 1.2s ease;
+}
+.s1-poem.show{opacity:1}
+.s1-title{
+  font-family:'Zhi Mang Xing',serif;
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  color:rgba(245,238,218,.92);margin-bottom:.6rem;
+  filter:drop-shadow(0 2px 16px rgba(0,0,0,.8));
+}
+.s1-lines{display:flex;flex-direction:column;gap:.65rem;align-items:flex-end}
+.sl{
+  font-size:clamp(.88rem,2.4vw,1.4rem);font-weight:300;
+  letter-spacing:.35em;color:rgba(235,228,210,0);
+  display:block;transition:color .85s ease;
+  text-shadow:0 2px 12px rgba(0,0,0,.9);
+}
+.sl.show{color:rgba(235,228,210,.9)}
+.s1-attr{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.62rem,1.6vw,.82rem);letter-spacing:.35em;
+  color:rgba(200,185,160,.32);margin-top:.8rem;
+}
+
+/* ── S2 SILK ── */
+.s2-text{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;
+  padding:clamp(2rem,5vw,5rem);pointer-events:none;
+}
+.s2-label{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.65rem,1.8vw,.85rem);letter-spacing:.5em;
+  color:rgba(245,238,218,.5);margin-bottom:.8rem;
+  transition:opacity 1s ease;
+}
+.s2-title{
+  font-family:'Zhi Mang Xing',serif;
+  font-size:clamp(2rem,7vw,5.5rem);
+  color:#f5f0e8;line-height:1.4;
+  filter:drop-shadow(0 2px 16px rgba(0,0,0,.7));
+  transition:opacity 1.2s ease,transform 1.2s ease;
+}
+
+/* ── S3 CLOUDS VERSE ── */
+.s3-lines{
+  position:absolute;inset:0;z-index:4;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(1.2rem,3vh,2.2rem);
+}
+.s3-line{
+  display:flex;align-items:baseline;gap:clamp(.8rem,2vw,1.6rem);
+  transition:opacity .9s ease,transform .9s ease;
+}
+.s3-line span{
+  font-size:clamp(1.4rem,4.5vw,3.2rem);font-weight:300;
+  letter-spacing:.25em;color:rgba(245,238,218,.95);
+  text-shadow:0 2px 24px rgba(0,0,0,.8);
+}
+.s3-line em{
+  font-style:normal;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.8rem,2.2vw,1.4rem);letter-spacing:.25em;
+  color:rgba(200,185,160,.55);
+}
+
+/* ── S4 RIPPLE LETTER ── */
+.s4-left{
+  position:absolute;left:0;top:0;bottom:0;width:50%;
+  background-size:cover;background-position:80% center;
+  filter:saturate(18%) brightness(.5);
+}
+.s4-right{
+  position:absolute;right:0;top:0;bottom:0;width:50%;
+  background:#050402;overflow:hidden;
+}
+.s4-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.s4-letter{
+  position:absolute;inset:0;z-index:2;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2rem,5vw,4rem);
+  opacity:0;transition:opacity 1.2s ease;
+}
+.s4-letter.show{opacity:1}
+.lc{position:absolute;width:16px;height:16px;border-color:rgba(200,185,160,.28);border-style:solid}
+.lc.tl{top:10px;left:10px;border-width:1px 0 0 1px}
+.lc.tr{top:10px;right:10px;border-width:1px 1px 0 0}
+.lc.bl{bottom:10px;left:10px;border-width:0 0 1px 1px}
+.lc.br{bottom:10px;right:10px;border-width:0 1px 1px 0}
+.l-orn{text-align:center;letter-spacing:.5em;font-size:.7rem;color:rgba(200,185,160,.2);margin-bottom:1rem}
+.l-greet{font-size:clamp(.88rem,2vw,1.05rem);font-weight:400;color:rgba(240,232,215,.9);letter-spacing:.14em;margin-bottom:.9rem}
+.l-body{font-weight:300;font-size:clamp(.72rem,1.4vw,.85rem);line-height:2.5;letter-spacing:.1em;color:rgba(210,200,180,.6);margin-bottom:1.2rem}
+.l-sign{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(.75rem,1.7vw,.92rem);letter-spacing:.14em;color:rgba(200,185,160,.4);text-align:right}
+
+/* ── S5 FINALE ── */
+.s5-photo{filter:saturate(0%) brightness(.5)}
+.s5-wash{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(5,4,2,.6) 0%,rgba(5,4,2,.25) 50%,rgba(5,4,2,.6) 100%);
+  z-index:1;
+}
+.s5-text{
+  position:absolute;inset:0;z-index:3;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  pointer-events:none;
+}
+.s5-main{
+  font-family:'Zhi Mang Xing',serif;
+  font-size:clamp(4rem,18vw,13rem);
+  font-weight:400;letter-spacing:.1em;color:#f5f0e8;
+  filter:drop-shadow(0 4px 24px rgba(0,0,0,.5));
+}
+.s5-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.78rem,2vw,1.1rem);letter-spacing:.42em;
+  color:rgba(245,238,218,.4);margin-top:.8rem;
+}
+#replay-btn{
+  margin-top:2.5rem;
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(.75rem,1.8vw,.92rem);letter-spacing:.28em;
+  color:rgba(245,238,218,.45);background:transparent;
+  border:1px solid rgba(245,238,218,.2);
+  padding:.65rem 2rem;cursor:pointer;
+  transition:color .3s,background .3s;
+}
+#replay-btn:hover{background:rgba(245,238,218,.1);color:rgba(245,238,218,.9)}
+
+/* ── SEAL ── */
+#seal-c{
+  position:fixed;bottom:clamp(1.8rem,4vw,3.5rem);right:clamp(1.5rem,3.5vw,3rem);
+  z-index:200;pointer-events:none;width:56px;height:56px;
+  opacity:0;transition:opacity 1s ease;
+}
+#seal-c.show{opacity:1}
+
+/* ── DOTS ── */
+#dots{
+  position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);
+  z-index:200;display:flex;gap:10px;
+}
+.dot{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(200,185,160,.2);
+  transition:background .4s,transform .4s;cursor:pointer;
+}
+.dot.on{background:rgba(200,185,160,.8);transform:scale(1.6)}
+
+/* ── PROGRESS ── */
+#prog{position:fixed;bottom:0;left:0;right:0;height:2px;z-index:30;background:rgba(200,185,160,.07)}
+#prog-fill{height:100%;width:0%;background:rgba(200,185,160,.35);transition:width .9s cubic-bezier(.4,0,.2,1)}

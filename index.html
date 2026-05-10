@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>妈妈，我爱您</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&family=Zhi+Mang+Xing&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <div id="scenes">
+
+    <!-- S0: 卷 — scroll unroll reveals xiagui -->
+    <div class="scene" id="s0">
+      <div class="s-bg" style="background-image:url('xiagui.webp');filter:saturate(20%) brightness(.5)"></div>
+      <div id="s0-overlay"></div>
+      <div class="s0-text">
+        <p id="s0-ey" style="opacity:0">水墨 · 母亲节</p>
+        <h1 id="s0-k" style="opacity:0;transform:scale(1.15)">妈妈</h1>
+        <p id="s0-s" style="opacity:0">以水墨为笔，以爱为墨</p>
+      </div>
+      <p class="click-hint" style="opacity:0">点击继续 · click anywhere</p>
+    </div>
+
+    <!-- S1: 火 — fire burns inward reveals nizan -->
+    <div class="scene" id="s1">
+      <div class="s-bg" style="background-image:url('nizan.webp');filter:saturate(22%) brightness(.55)"></div>
+      <canvas id="c1" class="s-canvas"></canvas>
+      <div class="s1-poem" id="s1-poem">
+        <p class="s1-title">游子吟</p>
+        <div class="s1-lines">
+          <span class="sl">慈母手中线，游子身上衣。</span>
+          <span class="sl">临行密密缝，意恐迟迟归。</span>
+          <span class="sl">谁言寸草心，报得三春晖。</span>
+        </div>
+        <p class="s1-attr">— 孟郊</p>
+      </div>
+    </div>
+
+    <!-- S2: 幕 — silk curtain parts reveals bg1 -->
+    <div class="scene" id="s2">
+      <div class="s-bg" style="background-image:url('bg1.jpeg');filter:saturate(60%) brightness(.7)"></div>
+      <canvas id="c2" class="s-canvas"></canvas>
+      <div class="s2-text">
+        <p class="s2-label" style="opacity:0">往日时光</p>
+        <h2 class="s2-title" style="opacity:0;transform:translateY(20px)">那些年，<br>我们一起走过</h2>
+      </div>
+    </div>
+
+    <!-- S3: 云 — clouds part reveals xiagui top crop -->
+    <div class="scene" id="s3">
+      <div class="s-bg" style="background-image:url('xiagui.webp');background-position:center 15%;filter:saturate(18%) brightness(.48)"></div>
+      <canvas id="c3" class="s-canvas"></canvas>
+      <div class="s3-lines">
+        <div class="s3-line" style="opacity:0;transform:translateX(-30px)"><span>您的双手</span><em>温柔而坚定</em></div>
+        <div class="s3-line" style="opacity:0;transform:translateX(-30px)"><span>承载了我</span><em>所有的梦想</em></div>
+        <div class="s3-line" style="opacity:0;transform:translateX(-30px)"><span>岁月流转</span><em>爱永不变</em></div>
+        <div class="s3-line" style="opacity:0;transform:translateX(-30px)"><span>感恩有您</span><em>伴我成长</em></div>
+      </div>
+    </div>
+
+    <!-- S4: 水 — ripple reveals letter on nizan -->
+    <div class="scene" id="s4">
+      <div class="s4-left" style="background-image:url('nizan.webp')"></div>
+      <div class="s4-right" id="s4-right">
+        <canvas id="c4" class="s4-canvas"></canvas>
+        <div class="s4-letter" id="s4-letter">
+          <div class="lc tl"></div><div class="lc tr"></div>
+          <div class="lc bl"></div><div class="lc br"></div>
+          <p class="l-orn">· ✦ ·</p>
+          <p class="l-greet">亲爱的妈妈，</p>
+          <p class="l-body">谢谢您为我所做的一切。<br>
+            您的爱是我最坚实的依靠，<br>
+            是黑暗中最温柔的光。<br><br>
+            身处墨尔本，我时常想起<br>
+            您做的饭菜的香气，<br>
+            还有每个您陪伴的清晨。<br><br>
+            无论走多远，<br>
+            我永远是您的孩子。</p>
+          <p class="l-sign">爱您的孩子，从墨尔本 ♡</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- S5: 爱 — petal bloom, bg brightens -->
+    <div class="scene" id="s5">
+      <div class="s5-photo s-bg" style="background-image:url('bg1.jpeg')"></div>
+      <div class="s5-wash"></div>
+      <div class="s5-text">
+        <p class="s5-main" style="opacity:0;transform:scale(.9)">我爱您</p>
+        <p class="s5-sub" style="opacity:0">always · 永远</p>
+        <button id="replay-btn" style="opacity:0;pointer-events:none" onclick="restart()">↩ 再看一次</button>
+      </div>
+    </div>
+
+  </div>
+
+  <canvas id="seal-c"></canvas>
+  <div id="dots"></div>
+  <div id="prog"><div id="prog-fill"></div></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
