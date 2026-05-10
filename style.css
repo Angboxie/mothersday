@@ -182,11 +182,13 @@ html,body{width:100%;height:100%;overflow:hidden;background:#050402;font-family:
   display:flex;gap:clamp(1.5rem,4vw,3rem);
   align-items:center;justify-content:center;
   margin-bottom:1.8rem;
+  flex-wrap:wrap;
 }
 .s5-portrait-wrap{
   position:relative;
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity 1.4s ease;
+  flex-shrink:0;
 }
 .s5-portrait-wrap.show{opacity:1}
 .s5-portrait-ring{
